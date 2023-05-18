@@ -1,0 +1,7 @@
+<div class="center-container">
+  <input type="file" (change)="fileChangeHandler($event)">
+  <!-- <button (click)="uploadImage()">Upload</button> -->
+  <div *ngIf="selectedImage" class="image-preview">
+    <img [src] ="output?.base64" alt=""/>
+  </div>
+</div>

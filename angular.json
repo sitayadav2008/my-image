@@ -87,12 +87,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css","node_modules/ngx-photo-editor/photo-editor.css"
+
+
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2ea3476a-8946-4e11-9830-62f9ec611411"
   }
 }

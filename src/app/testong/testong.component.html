@@ -1,0 +1,49 @@
+<p>testong works!</p>
+
+
+<div class="form-container">
+    <form #fsubmit="ngForm" (ngSubmit)="addData(fsubmit)">
+    <label>
+      Name:
+      <input type="text" name="name" ngModel #nameInput >
+    </label>
+    <label>
+      Email:
+      <input type="email" name="email" ngModel #emailInput>
+    </label>
+    <label>
+      Number:
+      <input type="tel" name="password" ngModel>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+<div class="table-container">
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Number</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userData">
+        <td><input type="text" name="name" [(ngModel)]="user.name"></td>
+        <td><input type="email" name="email" [(ngModel)]="user.email"></td>
+        <td><input type="tel" name="password" [(ngModel)]="user.password"></td>
+        <td>
+          <button class="edit-btn" (click)="editData(user.id , user)">Edit</button>
+        </td>
+        <td>
+          <button class="delete-btn" (click)="deleteData(user.id)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  
