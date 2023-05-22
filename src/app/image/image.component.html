@@ -1,7 +1,41 @@
-<div class="center-container">
-  <input type="file" (change)="fileChangeHandler($event)">
-  <!-- <button (click)="uploadImage()">Upload</button> -->
-  <div *ngIf="selectedImage" class="image-preview">
-    <img [src] ="output?.base64" alt=""/>
+
+
+<header class="header" [ngClass]="{ 'dark-mode': isDarkMode }">
+  <div class="logo">Welcome to My Page</div>
+  <div class="mode-toggle" (click)="toggleDarkMode()">
+    <i class="material-icons" [innerHTML]="isDarkMode ? 'nights_stay' : 'wb_sunny'"></i>
+  </div>
+  <div class="login-logout" (click)="navigateToLogin()">
+    <i class="material-icons" [innerHTML]="isLoggedIn ? 'logout' : 'login'"></i>
+  </div>
+</header>
+
+<div class="main-container" [ngClass]="{ 'dark-mode': isDarkMode }">
+  <div class="left-container">
+    <nav class="nav-bar">
+      <button (click)="fileInput.click()">Upload an Image</button>
+      <input #fileInput type="file" style="display: none" (change)="onImageSelected($event)" accept="image/*">
+      <button [disabled]="!selectedImage" (click)="uploadImage()">Upload</button>
+      
+      <button routerLink="crop&resize">Crop & Resize</button>
+      <button (click)="applyFilter()">Filter</button>
+      <button (click)="update()">Update</button>
+    </nav>
+  </div>
+  <div class="content-container">
+    <router-outlet></router-outlet>
+   
   </div>
 </div>
+
+<footer class="footer" [ngClass]="{ 'dark-mode': isDarkMode }">
+  <div>@ 2023 My Page. All rights reserved.</div>
+</footer>
+
+
+<!-- <div class="center-container">
+  <input type="file" (change)="fileChangeHandler($event)">
+  <div *ngIf="selectedImageUrl" class="image-preview">
+    <img [src]="selectedImageUrl" alt="">
+  </div>
+</div> -->

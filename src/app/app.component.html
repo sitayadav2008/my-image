@@ -1,18 +1,15 @@
 <!-- <mat-toolbar color="primary">
-    <div class="left-buttons">
-      <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
-    <div class="right-buttons">
-      <button mat-icon-button>
-        <mat-icon>person</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar> -->
+    Sign up Flow with firebase
+    <button mat-button routerLink="login">
+      <mat-icon>login</mat-icon>
+login
+    </button>
+  </mat-toolbar>
+<div class="contentdiv">
+  <router-outlet></router-outlet>
+</div> -->
 
-
-
+<!-- 
   <header class="header" [ngClass]="{ 'dark-mode': isDarkMode }">
     <div class="logo">Welcome to My Page</div>
     <div class="mode-toggle" (click)="toggleDarkMode()">
@@ -27,7 +24,7 @@
     <div class="left-container">
       <nav class="nav-bar">
         <button routerLink="/upload-image">Upload an Image</button>
-        <button (click)="cropResize()">Crop & Resize</button>
+        <button routerLink="crop&resize">Crop & Resize</button>
         <button (click)="applyFilter()">Filter</button>
         <button (click)="update()">Update</button>
       </nav>
@@ -41,5 +38,13 @@
   <footer class="footer" [ngClass]="{ 'dark-mode': isDarkMode }">
     <div>@ 2023 My Page. All rights reserved.</div>
   </footer>
- 
 
+ -->
+<!-- <app-login></app-login> -->
+<!-- <router-outlet></router-outlet> -->
+<!-- <app-sign-up></app-sign-up> -->
+<!-- <app-landing></app-landing> -->
+<!-- <app-image></app-image> -->
+<h1>Image Editor App</h1>
+<app-image-editor></app-image-editor>
+<!-- <app-canvas></app-canvas> -->

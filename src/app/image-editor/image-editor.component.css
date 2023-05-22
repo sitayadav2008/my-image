@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #ecd2d2;
+  border-bottom: 1px solid #ccc;
+}
+.logo {
+  font-size: 24px;
+}
+
+.mode-toggle,
+.login-logout {
+  cursor: pointer;
+}
+
+.mode-toggle i,
+.login-logout i {
+  font-size: 20px;
+}
+
+.dark-mode {
+  background-color: #979797;
+  color: #fff;
+}
+
+.header.dark-mode {
+  background-color: #333;
+  border-bottom: 1px solid #ccc;
+}
+.image-editor-container {
+  width: 700px;
+  height: 550px;
+  padding: 80px;
+}
+.imgcc{
+  align-items: center;
+
+}
+.dark-mode .image-editor-container {
+  background-color: #333;
+  color: #fff;
+}

@@ -1,0 +1,19 @@
+<header class="header" [ngClass]="{ 'dark-mode': isDarkMode }">
+    <div class="logo">Welcome to My Page</div>
+    <div class="mode-toggle" (click)="toggleDarkMode()">
+      <i class="material-icons" [innerHTML]="isDarkMode ? 'nights_stay' : 'wb_sunny'"></i>
+    </div>
+    <div class="login-logout" (click)="navigateToLogin()">
+      <i class="material-icons" [innerHTML]="isLoggedIn ? 'logout' : 'login'"></i>
+    </div>
+  </header>
+
+  <div class="imgcc" [ngClass]="{ 'dark-mode': isDarkMode }">
+
+     <div class="image-editor-container" [ngClass]="{ 'dark-mode': isDarkMode }">
+    <ejs-imageeditor></ejs-imageeditor>
+  </div>
+  </div>
+  
+ 
+  

@@ -1,0 +1,83 @@
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  .or-divider {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .btn-gmail {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #db4a39;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .btn-gmail:hover {
+    background-color: #c53727;
+  }
+  
+  .signup-forgot {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .signup-forgot a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .signup-forgot a:hover {
+    text-decoration: underline;
+  }
+  
