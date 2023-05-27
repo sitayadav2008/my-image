@@ -1,1 +1,154 @@
-<p>home works!</p>
+<!-- app.component.html -->
+<section id="header" #header>
+  <div class="header container">
+    <div class="nav-bar">
+      <div class="brand">
+        <a href="#hero">
+          <h1><span>S</span>ita <span>Y</span>adav</h1>
+        </a>
+      </div>
+      <div class="nav-list">
+        <div class="hamburger" #hamburger>
+          <div class="bar"></div>
+        </div>
+        <ul #mobileMenu>
+          <li><a (click)="scrollToSection('hero')" data-after="Home">Home</a></li>
+          <li><a (click)="scrollToSection('projects')" data-after="Projects">Projects</a></li>
+
+          <li><a (click)="scrollToSection('about')" data-after="About">About</a></li>
+
+          <li><a (click)="scrollToSection('contact')" data-after="Contact">Contact</a></li>
+          <li><a (click)="logout()" data-after="Service">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hero">
+  <div class="hero container">
+    <div>
+      <h1>Hello, <span></span></h1>
+      <h1>This is <span></span></h1>
+      <h1>SITA <span></span></h1>
+      <a href="#projects" type="button" class="cta">Portfolio</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="projects">
+  <div class="projects container">
+    <div class="projects-header">
+      <h1 class="section-title">Recent <span>Projects</span></h1>
+    </div>
+    <div class="all-projects">
+      <div class="project-item">
+        <div class="project-info">
+          <h1>Image Editor</h1>
+          <h2>Web Development</h2>
+          <p>The image editor created using ngx-cropper in Angular is a powerful tool for image manipulation and
+            customization. It allows users to crop, rotate, flip, zoom, and save images with ease. With its intuitive
+            interface and versatile functionality, the ngx-cropper image editor enhances the image editing experience
+            for Angular applications.</p>
+          <a routerLink="/editor-image" type="button" class="cta">View Details</a>
+        </div>
+        <div class="project-img">
+          <img src="assets/Screenshot (58).png" alt="project-1" />
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-info">
+          <h1>CRUD OPERATION</h1>
+          <h2>Web Development</h2>
+          <p>CRUD operations, which stands for Create, Read, Update, and Delete, are essential for managing data in
+            applications. These operations allow users to add, view, modify, and remove records from a database or data
+            source. By implementing CRUD functionality, applications can provide a seamless user experience, enabling
+            efficient data management and ensuring data integrity. CRUD operations form the backbone of many web and
+            software applications, empowering users to interact with data in a straightforward and organized manner.</p>
+          <a routerLink="/crud" type="button" class="cta">
+
+
+            View Details</a>
+        </div>
+        <div class="project-img">
+          <img src="assets/Screenshot (57).png" alt="project-2" />
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-info">
+          <h1>Project 3</h1>
+          <h2>Web Development</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias reiciendis, doloremque, placeat iusto error
+            aliquid obcaecati dolore perferendis aspernatur, facilis repellat deleniti veniam beatae impedit maxime cum
+            laborum. Animi, repellat!</p>
+          <a href="#" type="button" class="cta">View Details</a>
+        </div>
+        <div class="project-img">
+          <img src="https://via.placeholder.com/400" alt="project-3" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about container">
+    <div class="col-left">
+      <div class="about-img">
+        <img src="https://via.placeholder.com/400" alt="about" />
+      </div>
+    </div>
+    <div class="col-right">
+      <h1 class="section-title">About <span>Me</span></h1>
+      <h2>Full Stack Developer</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio rerum illo ipsam repudiandae, veniam
+        delectus esse doloribus laborum odio nostrum dolorum pariatur dolorem vero, molestias quidem adipisci maxime
+        soluta voluptatum!</p>
+      <a href="#" type="button" class="cta">Download CV</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact">
+  <div class="contact container">
+    <div>
+      <h1 class="section-title">Contact <span>info</span></h1>
+    </div>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+        <div class="contact-info">
+          <h1>Phone</h1>
+          <h2>+91 6261082358</h2>
+          <h2>+91 6261082358</h2>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+        <div class="contact-info">
+          <h1>Email</h1>
+          <h2>sitayadav@gmail.com</h2>
+          <h2>siyay58@gmail.com</h2>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+        <div class="contact-info">
+          <h1>Address</h1>
+          <h2>Bhilai, Chhattisgarh, India</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+
+
+<footer>
+  <div class="footcont">
+    <p>Copyright © 2023 SITA. All rights reserved</p>
+  </div>
+</footer>

@@ -36,7 +36,7 @@ export class SignUpComponent {
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
       .then(userCredential => {
         console.log('User signed up:', userCredential.user?.email);
-        this.router.navigate(['/image']);
+        this.router.navigate(['/home']);
       })
       .catch(error => {
         this.errorMsg = error.message;

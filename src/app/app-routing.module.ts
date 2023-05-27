@@ -6,7 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import { CommonModule } from '@angular/common';
-import { CropResizeComponent } from './crop-resize/crop-resize.component';
+import { EditorimageComponent } from './editorimage/editorimage.component';
+import { CrudComponent } from './crud/crud.component';
+
 
 const routes: Routes = [
 
@@ -46,11 +48,15 @@ const routes: Routes = [
 //     path: 'upload-image', component: ImageComponent
 // }
 // ,
-{
-  path:'crop&resize',
-  component:CropResizeComponent
-}
 
+{
+  path: 'editor-image',
+  component: EditorimageComponent
+},
+{
+  path: 'crud',
+  component:CrudComponent
+}
 
 
 ];

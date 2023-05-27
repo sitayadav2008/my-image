@@ -1,4 +1,28 @@
-canvas {
-    border: 1px solid #ccc;
+.custom-div {
+  width: 500px;
+  height: 500px;
+  background-color: lightpink;
+  border: 2px solid black;
+}
+
+.header {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.file-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.body {
+  padding: 20px;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 600px) {
+  .custom-div {
+    width: 100%;
+    height: auto;
   }
-  
+}

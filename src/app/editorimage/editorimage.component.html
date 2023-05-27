@@ -1,0 +1,200 @@
+<!-- <body [ngClass]="{ 'dark-mode': isDarkMode }">
+  
+  <header class="header" [ngClass]="{ 'dark-mode': isDarkMode }">
+    <div class="logo">Welcome to My Page</div>
+    <div class="mode-toggle" (click)="toggleDarkMode()">
+      <i class="material-icons" [innerHTML]="isDarkMode ? 'nights_stay' : 'wb_sunny'"></i>
+    </div>
+    <div class="login-logout" (click)="navigateToLogin()">
+      <i class="material-icons" [innerHTML]="isLoggedIn ? 'logout' : 'login'"></i>
+    </div>
+  </header> -->
+
+  <!-- <body>
+
+  <div class="projects-header">
+    <h1 class="section-title">Image <span>Editor</span></h1>
+  </div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <section id="projects">
+    <div class="projects container">
+      <div class="all-projects">
+        <div class="project-item">
+  
+<div class="my-div">
+  <div class="headerdiv">
+    <label for="fileInput" class="icon-button">
+      
+      <mat-icon class="icon">folder</mat-icon>
+    </label>
+    <div class="header-text">Choose Image</div>
+    <button class="clear-button" (click)="clear()">Clear</button>
+    <input id="fileInput" type="file" #myInput class="hidden" (change)="fileChangeEvent($event)" />
+  </div>
+  <div class="content-container">
+    <div class="content-first">
+      <h5>Crop Image</h5>
+      <image-cropper 
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [containWithinAspectRatio]="containWithinAspectRatio"
+        [aspectRatio]="4 / 3"
+        [resizeToWidth]="256"
+        [cropperMinWidth]="128"
+        [onlyScaleDown]="true"
+        [roundCropper]="false"
+        [canvasRotation]="canvasRotation"
+        [transform]="transform"
+        [alignImage]="'left'"
+        [style.display]="showCropper ? null : 'none'"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady($event)"
+        (loadImageFailed)="loadImageFailed()">
+      </image-cropper>
+    </div>
+    <div class="content-second">
+      <h5>Preview</h5>
+      <img [src]="croppedImage" />
+      
+    </div>
+    <div class="content-third"></div>
+  </div>
+  <div class="footerdiv">
+    <button (click)="rotateLeft()" class="btn btn-dark">
+      <mat-icon>rotate_left</mat-icon>
+    </button>
+    <button (click)="rotateRight()" class="btn btn-dark">
+      <mat-icon>rotate_right</mat-icon>
+    </button>
+    <button (click)="flipHorizontal()" class="btn btn-dark">
+      <mat-icon>flip</mat-icon>
+    </button>
+    <button (click)="flipVertical()" class="btn btn-dark">
+      <mat-icon>flip</mat-icon>
+    </button>
+    <input [(ngModel)]="rotation" placeholder="Rotation" class="form-control mr-2" type="number" (keyup)="updateRotation()" />
+
+  <input (click)="zoomOut()" class="mr-4 btn btn-success zoom-btn" value="Zoom -" />
+  <input (click)="zoomIn()" class="mr-2 btn btn-success" value="Zoom +" />
+
+  
+    <button (click)="toggleContainWithinAspectRatio()" class="btn btn-warning">
+      <mat-icon>{{ containWithinAspectRatio ? 'crop_free' : 'crop_original' }}</mat-icon>
+    </button>
+    <button (click)="resetImage()" class="btn btn-warning">
+      <mat-icon>settings_backup_restore</mat-icon>
+    </button>
+    <button (click)="saveImage()" class="btn btn-primary">Save</button>
+  </div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+  </section>
+<footer class="footer" [ngClass]="{ 'dark-mode': isDarkMode }">
+  <div>@ 2023 My Page. All rights reserved.</div>
+</footer>
+</body> -->
+
+
+<app-header></app-header>
+
+<section id="projects">
+  <div class="projects container">
+    <div class="projects-header " style="margin-top: 50px;">
+      <h1 class="section-title">Image <span>Editor</span></h1>
+    </div>
+    <div class="allcontent" style="margin-top: 10px;">
+      <div class="headerdiv">
+        <label for="fileInput" class="icon-button">
+          <mat-icon class="icon">folder</mat-icon>
+        </label>
+        <div class="header-text">Choose Image</div>
+        <button class="clear-button" (click)="clear()">Clear</button>
+        <input id="fileInput" type="file" #myInput class="hidden" (change)="fileChangeEvent($event)" />
+      </div>
+      <div class="all-projects">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Image Editor</h1>
+            <div class="content-first">
+              <h5>Crop Image</h5>
+              <image-cropper 
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [containWithinAspectRatio]="containWithinAspectRatio"
+                [aspectRatio]="4 / 3"
+                [resizeToWidth]="256"
+                [cropperMinWidth]="128"
+                [onlyScaleDown]="true"
+                [roundCropper]="false"
+                [canvasRotation]="canvasRotation"
+                [transform]="transform"
+                [alignImage]="'left'"
+                [style.display]="showCropper ? null : 'none'"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady($event)"
+                (loadImageFailed)="loadImageFailed()">
+              </image-cropper>
+            </div>
+          </div>
+        </div>
+  
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Image Editor</h1>
+            <div class="content-second">
+              <h5>Preview</h5>
+              <img [src]="croppedImage" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footerdiv">
+        <button (click)="rotateLeft()" class="btn btn-dark">
+          <mat-icon>rotate_left</mat-icon>
+        </button>
+        <button (click)="rotateRight()" class="btn btn-dark">
+          <mat-icon>rotate_right</mat-icon>
+        </button>
+        <button (click)="flipHorizontal()" class="btn btn-dark">
+          <mat-icon>flip</mat-icon>
+        </button>
+        <button (click)="flipVertical()" class="btn btn-dark">
+          <mat-icon>flip</mat-icon>
+        </button>
+        <input [(ngModel)]="rotation" placeholder="Rotation" class="form-control mr-2" type="number" (keyup)="updateRotation()" />
+        <input (click)="zoomOut()" class="mr-4 btn btn-success zoom-btn" value="Zoom -" />
+        <input (click)="zoomIn()" class="mr-2 btn btn-success" value="Zoom +" />
+        <button (click)="toggleContainWithinAspectRatio()" class="btn btn-warning">
+          <mat-icon>{{ containWithinAspectRatio ? 'crop_free' : 'crop_original' }}</mat-icon>
+        </button>
+        <button (click)="resetImage()" class="btn btn-warning">
+          <mat-icon>settings_backup_restore</mat-icon>
+        </button>
+        <button (click)="saveImage()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</section>

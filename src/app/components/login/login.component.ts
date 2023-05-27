@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     
   // })
 
+  
 
   email: string = '';
   password: string = '';
@@ -39,8 +40,8 @@ export class LoginComponent implements OnInit {
     this.afAuth.signInWithEmailAndPassword(this.email, this.password)
     .then(userCredential => {
       console.log('User logged in:', userCredential.user?.email);
-      this.router.navigate(['/image']);
-      this.showimage = true; // set showCrud to true
+      this.router.navigate(['/home']);
+      // this.showimage = true; 
     })
     .catch(error => {
       this.errorMsg = error.message;
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
     .then(userCredential => {
       const email = userCredential.user?.email; // Get the email from user credential
       console.log('User logged in with Google:', email);
-      this.router.navigate(['/image']);
+      this.router.navigate(['/home']);
     })
     .catch(error => {
       this.errorMsg = error.message;

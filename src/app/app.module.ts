@@ -52,7 +52,17 @@ import {NgxImageEditorModule} from "ngx-image-editor";
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import {ImageViewerModule} from 'ngx-image-viewer';
-import { CanvasComponent } from './canvas/canvas.component'
+import { CanvasComponent } from './canvas/canvas.component';
+import { EditorimageComponent } from './editorimage/editorimage.component'
+// import { ImageCropperModule } from 'angular-image-cropper';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { CrudComponent } from './crud/crud.component';
+import { HeaderComponent } from './header/header.component';
+
+// import { ImageCropperComponent } from 'ngx-image-cropper';
+
+
+// import { ScrollToModule } from 'ng2-scroll-to';
 
 
 @NgModule({
@@ -67,7 +77,11 @@ import { CanvasComponent } from './canvas/canvas.component'
     HomeComponent,
     CropResizeComponent,
     ImageEditorComponent,
-    CanvasComponent
+    CanvasComponent,
+    EditorimageComponent,
+    CrudComponent,
+    HeaderComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -98,10 +112,12 @@ import { CanvasComponent } from './canvas/canvas.component'
     
   
     MatToolbarModule,
+    AngularFireStorageModule,
     ImageCropperModule,
+    
     
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, CropResizeComponent]
 })
 export class AppModule { }

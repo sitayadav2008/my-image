@@ -1,6 +1,17 @@
-import { Component, Input } from '@angular/core';
-import { Firestore, collection, addDoc, doc, updateDoc, deleteDoc, collectionData } from '@angular/fire/firestore';
+import { Component, ElementRef, ViewChild ,OnInit} from '@angular/core';
+import { NgxCroppedEvent, NgxPhotoEditorService } from 'ngx-photo-editor';
+import { GetimageServiceService } from '../getimage.service.service';
+import { Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
+// import { AngularFireStorage } from '@angular/fire/storage';
+// import { finalize } from 'rxjs/operators';
+import { FirebaseApp } from '@angular/fire/compat';
+import { FirebaseStorage } from 'firebase/storage';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
+import { Observable, finalize } from 'rxjs';
 
+import { UploadTaskSnapshot } from 'firebase/storage';
+// import { Observable } from 'rxjs';
+// import { base64ToFile } from '';
 interface UserData {
   id?: string;
   name: string;
@@ -14,124 +25,200 @@ interface UserData {
   styleUrls: ['./testong.component.css']
 })
 export class TestongComponent {
- 
 
 
-  [x: string]: any;//dynamic properties added to it later in the code
-
-  userData: any[] = [];
-
-  constructor(private firestore: Firestore) { }
-
-
-  addData(fsubmit: any) {
-
-
-
-    const collectionInstance = collection(this.firestore, 'users'); //user collection in the firestoreDB using collection()
-
-    const formData = fsubmit.value;//gets the form data submitted by the user
   
-    const namePattern = /^[a-zA-Z ]{2,30}$/;
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-   
-    if (!formData.name || !namePattern.test(formData.name)) {
-      alert('Invalid name');
-      return;
-    }
-  
-    if (!formData.email || !emailPattern.test(formData.email)) {
-      alert('Invalid email');
-      return;
-    }
-  
-    addDoc(collectionInstance, formData)
-      .then(() => {
-        alert('Data Added');
-        this.userData.push(formData);
-        fsubmit.reset();//resets the form ''
-      })
-      .catch((err) => {
-        console.error('Error adding document:', err);
-      });
-  }
+  constructor(private storage: AngularFireStorage) {}
 
 
 
-
-
-
-
-
-
-
-
-
-  editData(id: string, user: UserData) {
-    const editDataRef = doc(this.firestore, 'users', id);//retrieves a data specified user id
-    const updatedUserData: UserData  = {
-      name: user.name,
-      email: user.email,
-      password: user.password
-    }; 
-  const namePattern = /^[a-zA-Z ]{2,30}$/;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   
 
-  if (!updatedUserData.name || !namePattern.test(updatedUserData.name)) {
-    alert('Invalid name');
-    return;
+  
+  
+
+  
+  title = 'my-image-cropper';
+  @ViewChild('myInput') myInputVariable!: ElementRef;
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  canvasRotation = 0;
+  rotation = 0;
+  scale = 1;
+  showCropper = false;
+  containWithinAspectRatio = false;
+  transform: ImageTransform = {};
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    console.log(event.base64, event)
+
+
+  }
+  imageLoaded() {
+    this.showCropper = true;
+  }
+  cropperReady(sourceImageDimensions: Dimensions) {
+    // cropper ready
+    console.log('Cropper ready', sourceImageDimensions);
+  }
+  loadImageFailed() {
+    // show message
+    console.log('Load failed');
   }
 
-  if (!updatedUserData.email || !emailPattern.test(updatedUserData.email)) {
-    alert('Invalid email');
-    return;
-  }
-    
-    
-    
-    
-    
-    
-    //creates a new object  with the user data that was passed into the function.
-    updateDoc(editDataRef, updatedUserData as { [x: string]: any; })
-      .then(() => {
-        alert('Data Updated');
-      })
-      .catch((error) => {
-        console.log('Error: ', error);
-      });
+  clear() {
+    this.croppedImage = '';
+    this.imageChangedEvent = '';
+    this.myInputVariable.nativeElement.value = '';
   }
 
+  rotateLeft() {
+    this.canvasRotation--;
+    this.flipAfterRotate();
+  }
 
+  rotateRight() {
+    this.canvasRotation++;
+    this.flipAfterRotate();
+  }
 
+  private flipAfterRotate() {
+    const flippedH = this.transform.flipH;
+    const flippedV = this.transform.flipV;
+    this.transform = {
+      ...this.transform,
+      flipH: flippedV,
+      flipV: flippedH,
+    };
+  }
 
+  flipHorizontal() {
+    this.transform = {
+      ...this.transform,
+      flipH: !this.transform.flipH,
+    };
+  }
 
-deleteData(id:string)
-{
-  const editDataRef = doc(this.firestore, 'users', id);
+  flipVertical() {
+    this.transform = {
+      ...this.transform,
+      flipV: !this.transform.flipV,
+    };
+  }
 
-  deleteDoc(editDataRef)
-  .then(()=>{
-    console.log('data deleted')
-  } )
+  resetImage() {
+    this.scale = 1;
+    this.rotation = 0;
+    this.canvasRotation = 0;
+    this.transform = {};
+  }
 
+  zoomOut() {
+    this.scale -= 0.1;
+    this.transform = {
+      ...this.transform,
+      scale: this.scale,
+    };
+  }
+
+  zoomIn() {
+    this.scale += 0.1;
+    this.transform = {
+      ...this.transform,
+      scale: this.scale,
+    };
+  }
+
+  toggleContainWithinAspectRatio() {
+    this.containWithinAspectRatio = !this.containWithinAspectRatio;
+  }
+
+  updateRotation() {
+    this.transform = {
+      ...this.transform,
+      rotate: this.rotation,
+    };
+  }
+
+  isDarkMode: boolean = false;
+  isLoggedIn: boolean = false;
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    const footer = document.querySelector('.footer');
+  if (footer) {
+    footer.classList.toggle('dark-mode');
+  }
+  const leftContainer = document.querySelector('.left-container');
+  if (leftContainer) {
+    leftContainer.classList.toggle('dark-mode');
+  }
+  const body = document.querySelector('body');
+  
+  const myDiv = document.querySelector('.my-div');
+  if (body) {
+    body.classList.toggle('dark-mode');
+  }
+  if (myDiv) {
+    myDiv.classList.toggle('dark-mode');
+  }
 }
 
-
-
-
-
-  ngOnInit() {
-
-    //get previous data from data base//read data
-    const collectionInstance = collection(this.firestore, 'users' );
-    
-    collectionData(collectionInstance, {idField : 'id'}).subscribe((data: any) => {
-      this.userData = data;
-    });
+ 
+  navigateToLogin() {
+    // this.router.navigate(['/login']);
   }
+
+
+  
+  saveImage() {  if (this.croppedImage) {
+    // Convert the base64 data to a Blob
+    const byteCharacters = atob(this.croppedImage.split(',')[1]);
+    const byteArrays = [];
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteArrays.push(byteCharacters.charCodeAt(i));
+    }
+    const byteArray = new Uint8Array(byteArrays);
+    const blob = new Blob([byteArray], { type: 'image/jpeg' });
+
+    // Generate a unique file name
+    const fileName = `cropped_image_${new Date().getTime()}.jpg`;
+
+    // Upload the image to Firebase Storage
+    const storageRef = this.storage.ref(fileName);
+    const uploadTask = storageRef.put(blob);
+
+    // Listen to upload progress and completion
+    uploadTask.snapshotChanges().subscribe(
+      (snapshot) => {
+        if (snapshot) {
+          // Handle progress updates if snapshot exists
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload progress: ${progress}%`);
+        }
+      },
+      (error) => {
+        // Handle upload error
+        console.error('Upload error:', error);
+      },
+      () => {
+        // Handle upload completion
+        storageRef.getDownloadURL().subscribe((downloadURL) => {
+          console.log('Cropped Image URL:', downloadURL);
+          // Perform further actions with the download URL
+          // You can save the URL to a database or use it as needed
+        });
+      }
+    );
+  } else {
+    console.log('No cropped image available.');
+  }}
+ 
+
 
 }
