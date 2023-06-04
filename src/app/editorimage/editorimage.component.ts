@@ -229,37 +229,34 @@ export class EditorimageComponent {
       const byteArray = new Uint8Array(byteArrays);
       const blob = new Blob([byteArray], { type: 'image/jpeg' });
   
-      // Generate a unique file name
       const fileName = `cropped_image_${new Date().getTime()}.jpg`;
   
-      // Upload the image to Firebase Storage
+      
       const storageRef = this.storage.ref(fileName);
       const uploadTask = storageRef.put(blob);
   
-      // Listen to upload progress and completion
+      
       uploadTask.snapshotChanges().subscribe(
         (snapshot) => {
           if (snapshot) {
-            // Handle progress updates if snapshot exists
+            
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log(`Upload progress: ${progress}%`);
           }
         },
         (error) => {
-          // Handle upload error
           console.error('Upload error:', error);
         },
         () => {
-          // Handle upload completion
           storageRef.getDownloadURL().subscribe((downloadURL) => {
             console.log('Cropped Image URL:', downloadURL);
             
-            // Store the download URL in Firestore
+            
             const imageData = { url: downloadURL };
             addDoc(collectionInstance, imageData)
               .then(() => {
                 console.log('Image stored in Firestore');
-                // Perform further actions if needed
+              
               })
               .catch((error) => {
                 console.error('Error storing image in Firestore:', error);

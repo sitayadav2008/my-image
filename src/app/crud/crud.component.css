@@ -1,4 +1,4 @@
-
+/* Form Container */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -21,7 +21,6 @@
 
 .form-container label {
   font-size: 16px;
-  /* font-weight: bold; */
   margin-bottom: 10px;
 }
 
@@ -52,6 +51,7 @@
   background-color: #45a049;
 }
 
+/* Table Container */
 .table-container {
   background-color: #29323c;
   color: white;
@@ -106,7 +106,7 @@
   text-decoration: underline;
 }
 
-
+/* Section Title */
 .section-title {
   font-size: 4rem;
   font-weight: 300;
@@ -119,4 +119,38 @@
 
 .section-title span {
   color: crimson;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 767px) {
+  /* Mobile styles */
+  .form-container {
+    width: 90%;
+  }
+  
+  .table-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet styles */
+  .form-container {
+    width: 70%;
+  }
+  
+  .table-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Desktop styles */
+  .form-container {
+    width: 400px;
+  }
+  
+  .table-container {
+    width: 100%;
+  }
 }

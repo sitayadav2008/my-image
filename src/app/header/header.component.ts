@@ -44,4 +44,14 @@ export class HeaderComponent implements OnInit {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  isMobileMenuOpen: boolean = false;
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
 }

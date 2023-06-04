@@ -1,4 +1,4 @@
-<p>header works!</p>
+<!-- 
 <section id="header"  #header>
     <div class="header container">
       <div class="nav-bar">
@@ -19,6 +19,34 @@
             <li><a href="#contact" data-after="Contact">Contact</a></li>
             <li><a (click)="logout()" data-after="Service">Logout</a></li>
 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+   -->
+
+
+
+
+   <section id="header" #header>
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>S</span>ita <span>Y</span>adav</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger" #hamburger (click)="toggleMobileMenu()">
+            <div class="bar"></div>
+          </div>
+          <ul #mobileMenu [ngClass]="{ 'active': isMobileMenuOpen }">
+            <li><a (click)="home()" data-after="Home">Home</a></li>
+            <li><a scrollTo="#projects" data-after="Projects">Projects</a></li>
+            <li><a href="#about" data-after="About">About</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+            <li><a (click)="logout()" data-after="Service">Logout</a></li>
           </ul>
         </div>
       </div>

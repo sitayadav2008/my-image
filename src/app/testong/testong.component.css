@@ -1,4 +1,4 @@
-#projects .projects {
+/* #projects .projects {
     flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
@@ -235,8 +235,8 @@
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     /* color: #485563; */
-  }
   
+/*   
   .login-container form {
     width: 100%;
   }
@@ -283,10 +283,10 @@
     text-align: center;
     font-weight: bold;
     /* color: #485563; */
-    font-size: 1.2rem;
-  }
+    /* font-size: 1.2rem; */
   
-  .login-container .btn-gmail {
+  
+  /* .login-container .btn-gmail {
     background-color: #db4437;
     color: white;
     padding: 10px 20px;
@@ -295,18 +295,18 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1rem;
-  }
+  } */
   
-  .login-container .signup-forgot {
+  /* .login-container .signup-forgot {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     font-size: 0.9rem;
   }
   
-  .login-container .signup-forgot a {
+  .login-container .signup-forgot a  */ 
     /* color: #485563; */
-    text-decoration: none;
+    /* text-decoration: none;
   }
   
   .login-container h2 span {
@@ -316,5 +316,5 @@
     body {
         background-color: rgba(128, 128, 128, 0.8);
         backdrop-filter: blur(20px);
-      }
-  
+      } */
+   
